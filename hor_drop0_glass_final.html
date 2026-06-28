@@ -1,0 +1,409 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400;500&family=Caveat:wght@500;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{--red:#E60022;--blk:#0A0A0A;--cr:#F7F3EE;--wm:#EDE8E1;}
+  .lp{font-family:'Inter',sans-serif;color:var(--blk);position:relative;
+    background:
+      radial-gradient(circle at 14% 8%, rgba(230,0,34,0.13), transparent 38%),
+      radial-gradient(circle at 86% 22%, rgba(202,134,123,0.18), transparent 42%),
+      radial-gradient(circle at 50% 88%, rgba(230,0,34,0.08), transparent 46%),
+      #F1EAE2;}
+  .glass{background:rgba(255,255,255,0.42);backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,0.6);box-shadow:0 8px 32px rgba(120,60,40,0.08);}
+  .glass-dark{background:rgba(12,10,9,0.74);backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(255,255,255,0.12);box-shadow:0 8px 32px rgba(0,0,0,0.2);}
+  .glass-red{background:rgba(230,0,34,0.82);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);border:1px solid rgba(255,255,255,0.2);box-shadow:0 8px 32px rgba(230,0,34,0.18);}
+  .wrap{padding:16px;display:flex;flex-direction:column;gap:16px;}
+  .mar{display:flex;white-space:nowrap;animation:sc 30s linear infinite;}
+  .mar.slow{animation-duration:36s;}
+  @keyframes sc{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .cb{display:inline-block;font-size:8px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;padding:4px 11px;}
+  .thumb{cursor:pointer;border:1px solid rgba(0,0,0,0.12);transition:border 0.15s;border-radius:8px;}
+  .thumb.on{border:1.5px solid var(--red);}
+  .nav-sticky{position:sticky;top:12px;z-index:100;}
+  .ov{display:none;position:fixed;inset:0;z-index:9999;background:rgba(10,8,7,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto;}
+  .ov.open{display:flex;}
+  .fld{width:100%;border:1px solid rgba(0,0,0,0.2);background:rgba(255,255,255,0.7);font-family:'Inter',sans-serif;font-size:12px;padding:11px 13px;outline:none;color:#000;border-radius:8px;}
+  .fld:focus{border-color:var(--red);}
+  .otp{width:44px;height:50px;border:1px solid rgba(0,0,0,0.2);background:rgba(255,255,255,0.7);text-align:center;font-family:'EB Garamond',serif;font-size:22px;color:#000;outline:none;border-radius:8px;}
+  .otp:focus{border-color:var(--red);}
+  .btn-primary{background:var(--red);color:#fff;border:none;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:14px;cursor:pointer;width:100%;border-radius:10px;box-shadow:0 6px 18px rgba(230,0,34,0.25);}
+  .btn-ghost{background:transparent;color:#888;border:none;font-size:10px;letter-spacing:0.06em;cursor:pointer;padding:8px;}
+  .lbl{font-size:8px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#888;margin-bottom:5px;}
+  .step-dot{height:3px;flex:1;background:rgba(0,0,0,0.12);transition:background 0.2s;border-radius:2px;}
+  .step-dot.on{background:var(--red);}
+  .toggle{width:38px;height:22px;border-radius:40px;background:rgba(0,0,0,0.18);position:relative;cursor:pointer;transition:background 0.15s;flex-shrink:0;}
+  .toggle.on{background:var(--red);}
+  .knob{width:16px;height:16px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left 0.15s;}
+  .toggle.on .knob{left:19px;}
+  .szbtn{border-radius:9px;font-size:12px;font-weight:500;padding:10px 0;cursor:pointer;text-align:center;transition:all .12s;}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:40px;background:rgba(255,255,255,0.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(230,0,34,0.3);}
+</style>
+
+<div class="lp">
+
+  <!-- ANNOUNCE -->
+  <div class="glass-dark" style="height:30px;overflow:hidden;display:flex;align-items:center;border-radius:0;border-left:none;border-right:none;border-top:none;">
+    <div class="mar">
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);padding:0 32px;">Drop 0 · Our first ever release</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:0 32px;">Exclusive launch offer · First 20 orders</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:0 32px;">Handcrafted in Jaipur</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);padding:0 32px;">Drop 0 · Our first ever release</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:0 32px;">Exclusive launch offer · First 20 orders</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:0 32px;">Handcrafted in Jaipur</span><span style="color:rgba(255,255,255,0.18);padding:0 3px;">✦</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- STICKY NAV -->
+    <nav class="nav-sticky glass" style="display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;border-radius:14px;">
+      <div style="display:flex;align-items:center;gap:11px;">
+        <div style="width:34px;height:34px;border:1px solid rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:16px;color:var(--blk);border-radius:9px;background:rgba(255,255,255,0.4);">R</div>
+        <div style="display:flex;flex-direction:column;line-height:1;">
+          <span style="font-family:'EB Garamond',serif;font-size:17px;letter-spacing:0.04em;color:var(--blk);">House of Rangreza</span>
+          <span style="font-size:7px;letter-spacing:0.18em;text-transform:uppercase;color:#998;margin-top:2px;">Boutique studio · Jaipur</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;">
+        <a onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})" style="font-size:10px;color:var(--blk);cursor:pointer;letter-spacing:0.04em;">Story</a>
+        <button onclick="openOrder()" style="background:var(--red);color:#fff;border:none;font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:9px 18px;cursor:pointer;border-radius:9px;box-shadow:0 4px 14px rgba(230,0,34,0.25);">Claim yours</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="glass" style="border-radius:18px;padding:56px 40px 48px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;"><div style="font-family:'EB Garamond',serif;font-size:280px;color:rgba(230,0,34,0.05);font-style:italic;line-height:1;user-select:none;">रंग</div></div>
+      <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+        <div class="pill" style="margin-bottom:22px;"><div style="width:6px;height:6px;background:var(--red);border-radius:50%;"></div><span style="font-size:8px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--red);">Drop 0 — An ode to the Pink City</span></div>
+        <h1 style="font-family:'EB Garamond',serif;font-size:54px;font-weight:400;line-height:1.02;color:var(--blk);letter-spacing:-0.02em;">For centuries, Jaipur's<br>artisans have coloured<br>the world's cloth.<br><em style="color:var(--red);">Now they've made yours.</em></h1>
+        <p style="font-size:14px;line-height:1.9;color:#4a4540;margin-top:22px;max-width:520px;margin-left:auto;margin-right:auto;font-weight:300;">The Shurta — hand-printed in Jaipur by the community that has practised this craft for generations. Authentic, limited, and beautifully made. This is where House of Rangreza begins.</p>
+        <div style="display:flex;gap:0;justify-content:center;margin-top:28px;">
+          <button onclick="openOrder()" style="background:var(--red);color:#fff;border:none;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:15px 40px;cursor:pointer;border-radius:11px;box-shadow:0 8px 22px rgba(230,0,34,0.28);">Claim yours</button>
+        </div>
+        <div style="display:flex;gap:18px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+          <span style="font-size:10px;color:#6a635e;font-weight:400;letter-spacing:0.04em;">Postpay</span><span style="color:#bbb;">·</span>
+          <span style="font-size:10px;color:#6a635e;font-weight:400;letter-spacing:0.04em;">Exclusive launch offer</span><span style="color:#bbb;">·</span>
+          <span style="font-size:10px;color:#6a635e;font-weight:400;letter-spacing:0.04em;">First 20 of 50 pieces</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- RED STRIP -->
+    <div class="glass-red" style="height:40px;overflow:hidden;display:flex;align-items:center;border-radius:12px;">
+      <div class="mar slow">
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Claim your Shurta</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Shipping in 3 days across India</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Wear it, share your fit-check</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Postpay (first 20 orders)</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Claim your Shurta</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Shipping in 3 days across India</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Wear it, share your fit-check</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+        <span style="font-size:9px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#fff;padding:0 26px;">Postpay (first 20 orders)</span><span style="color:rgba(255,255,255,0.5);padding:0 4px;">✦</span>
+      </div>
+    </div>
+
+    <!-- PDP -->
+    <section class="glass" style="border-radius:18px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;min-height:580px;">
+      <div style="display:grid;grid-template-columns:64px 1fr;gap:10px;padding:24px;border-right:1px solid rgba(255,255,255,0.4);">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="thumb on" onclick="setMain(this,'[ FOUNDER PHOTO ]<br>Shurta worn','rgba(237,232,225,0.7)')" style="height:64px;background:rgba(237,232,225,0.7);display:flex;align-items:center;justify-content:center;"><span style="font-size:7px;color:#aaa;font-family:'EB Garamond',serif;text-align:center;line-height:1.2;">Worn<br>·founder·</span></div>
+          <div class="thumb" onclick="setMain(this,'[ IMAGE ]<br>Flat lay','rgba(227,221,212,0.7)')" style="height:64px;background:rgba(227,221,212,0.7);display:flex;align-items:center;justify-content:center;"><span style="font-size:7px;color:#aaa;font-family:'EB Garamond',serif;">Flat lay</span></div>
+          <div class="thumb" onclick="setMain(this,'[ IMAGE ]<br>Marble print','rgba(217,211,201,0.7)')" style="height:64px;background:rgba(217,211,201,0.7);display:flex;align-items:center;justify-content:center;"><span style="font-size:7px;color:#aaa;font-family:'EB Garamond',serif;text-align:center;line-height:1.2;">Marble<br>print</span></div>
+          <div class="thumb" onclick="setMain(this,'[ IMAGE ]<br>Linen weave','rgba(236,230,221,0.7)')" style="height:64px;background:rgba(236,230,221,0.7);display:flex;align-items:center;justify-content:center;"><span style="font-size:7px;color:#aaa;font-family:'EB Garamond',serif;text-align:center;line-height:1.2;">Linen<br>weave</span></div>
+          <div class="thumb" onclick="setMain(this,'[ IMAGE ]<br>Back view','rgba(230,224,214,0.7)')" style="height:64px;background:rgba(230,224,214,0.7);display:flex;align-items:center;justify-content:center;"><span style="font-size:7px;color:#aaa;font-family:'EB Garamond',serif;text-align:center;line-height:1.2;">Back<br>view</span></div>
+        </div>
+        <div id="main-img" style="background:rgba(237,232,225,0.6);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;">
+          <div style="position:absolute;top:14px;left:14px;"><span class="cb glass-dark" style="color:#fff;border-radius:20px;">The Pink City · Drop 0</span></div>
+          <div id="main-img-label" style="color:rgba(0,0,0,0.18);font-family:'EB Garamond',serif;font-size:13px;text-align:center;line-height:2.8;">[ FOUNDER PHOTO ]<br>Shurta worn</div>
+          <div style="position:absolute;bottom:14px;right:14px;font-family:'EB Garamond',serif;font-size:11px;color:#999;font-style:italic;">Shot in Jaipur</div>
+        </div>
+      </div>
+      <div style="padding:40px 36px;display:flex;flex-direction:column;justify-content:center;gap:16px;">
+        <div>
+          <div style="font-size:8px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:8px;">Hand-printed · Marble · Limited 50</div>
+          <h2 style="font-family:'EB Garamond',serif;font-size:32px;font-weight:400;color:var(--blk);line-height:1.1;">The Pink City<br>— Marble Shurta</h2>
+          <p style="font-size:12px;color:#6a635e;margin-top:8px;line-height:1.7;font-weight:300;">Our Shurta — hand-printed, high-quality linen cotton, unisex oversized fit. Our first ever Shurta, crafted intentionally for you.</p>
+        </div>
+        <div class="glass-red" style="border-radius:12px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-family:'EB Garamond',serif;font-size:18px;color:#fff;line-height:1.15;">Exclusive launch offer</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.85);font-weight:300;margin-top:3px;">On the first 20 orders</div>
+          </div>
+          <span class="cb" style="background:#fff;color:var(--red);flex-shrink:0;border-radius:20px;">First 20 only</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <div class="glass" style="border-radius:10px;padding:11px 13px;"><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:#998;">Fabric</div><div style="font-size:11px;color:var(--blk);margin-top:2px;">100% linen cotton, natural dyes</div></div>
+          <div class="glass" style="border-radius:10px;padding:11px 13px;"><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:#998;">Fit</div><div style="font-size:11px;color:var(--blk);margin-top:2px;">Unisex, oversized</div></div>
+          <div class="glass" style="border-radius:10px;padding:11px 13px;"><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:#998;">Craft</div><div style="font-size:11px;color:var(--blk);margin-top:2px;">Hand-printed marble</div></div>
+          <div class="glass" style="border-radius:10px;padding:11px 13px;"><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:#998;">Made in</div><div style="font-size:11px;color:var(--blk);margin-top:2px;">Jaipur, Rajasthan</div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <div style="font-size:8px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--blk);">Select size</div>
+            <a style="font-size:10px;color:#888;text-decoration:underline;cursor:pointer;">Size guide</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;" id="pdp-sizes">
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickPdpSize(this,'S / M')">S / M</button>
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickPdpSize(this,'L / XL')">L / XL</button>
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickPdpSize(this,'XXL')">XXL</button>
+          </div>
+          <div style="font-size:9px;color:#aaa;margin-top:6px;font-weight:300;">Three-size unisex framework — relaxed, oversized cut</div>
+        </div>
+        <button onclick="openOrder()" style="background:var(--red);color:#fff;border:none;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:16px;cursor:pointer;border-radius:11px;box-shadow:0 6px 18px rgba(230,0,34,0.25);">Claim yours</button>
+      </div>
+    </section>
+
+    <!-- SILHOUETTE PHILOSOPHY -->
+    <section class="glass" style="border-radius:18px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;min-height:460px;">
+      <div style="padding:52px 44px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(255,255,255,0.4);">
+        <div style="font-size:8px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:#888;margin-bottom:16px;">The silhouette philosophy</div>
+        <h2 style="font-family:'EB Garamond',serif;font-size:34px;font-weight:400;color:var(--blk);line-height:1.05;">Is it a shirt?<br>Is it a kurta?<br>It's a <em style="color:var(--red);">Shurta.</em></h2>
+        <p style="font-size:12px;line-height:1.9;color:#4a4540;margin-top:18px;font-weight:300;max-width:380px;">An all-occasion silhouette inspired by Indian lifestyle and fashion. Traditionally, locals across India preferred a form of the kurta as their go-to attire — from the tribals of Rajasthan to farmers in the far south. It's a unified silhouette that comforts the entire Indian diaspora.</p>
+        <p style="font-size:12px;line-height:1.9;color:#4a4540;margin-top:14px;font-weight:300;max-width:380px;">We're reimagining it as a tribute to Indian fashion — putting it on the map in a market dominated by the borrowed silhouettes of shirts and t-shirts. The Shurta is our very own desi silhouette for the world.</p>
+        <div style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(0,0,0,0.12);">
+          <div style="font-family:'Caveat',cursive;font-size:22px;color:var(--red);font-weight:700;line-height:1.2;">We are a Shurta-first brand — every piece takes this India-inspired silhouette further into the world.</div>
+        </div>
+      </div>
+      <div style="background:rgba(237,232,225,0.5);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="font-family:'EB Garamond',serif;font-size:130px;color:rgba(230,0,34,0.05);font-style:italic;">रंग</div></div>
+        <div style="color:rgba(0,0,0,0.18);font-family:'EB Garamond',serif;font-size:12px;text-align:center;line-height:2.8;position:relative;z-index:1;">[ SILHOUETTE VISUAL ]<br>The Shurta cut —<br>shape, drape, detail</div>
+        <div style="position:absolute;bottom:16px;left:16px;"><span class="cb glass-red" style="color:#fff;border-radius:20px;">The Shurta silhouette</span></div>
+      </div>
+    </section>
+
+    <!-- CARE / FIT -->
+    <section style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div class="glass" style="border-radius:16px;padding:28px 26px;">
+        <div style="width:24px;height:1.5px;background:var(--red);margin-bottom:14px;"></div>
+        <div style="font-family:'EB Garamond',serif;font-size:18px;color:var(--blk);margin-bottom:6px;">How it fits</div>
+        <p style="font-size:11px;color:#6a635e;line-height:1.75;font-weight:300;">Relaxed, oversized, unisex. Falls easy off the shoulder. Size up for drama, true for a cleaner line.</p>
+      </div>
+      <div class="glass" style="border-radius:16px;padding:28px 26px;">
+        <div style="width:24px;height:1.5px;background:var(--red);margin-bottom:14px;"></div>
+        <div style="font-family:'EB Garamond',serif;font-size:18px;color:var(--blk);margin-bottom:6px;">How to care</div>
+        <p style="font-size:11px;color:#6a635e;line-height:1.75;font-weight:300;">Cold hand-wash, mild soap, dry in shade. Natural dyes deepen and soften with every wash.</p>
+      </div>
+      <div class="glass" style="border-radius:16px;padding:28px 26px;">
+        <div style="width:24px;height:1.5px;background:var(--red);margin-bottom:14px;"></div>
+        <div style="font-family:'EB Garamond',serif;font-size:18px;color:var(--blk);margin-bottom:6px;">Why it's limited</div>
+        <p style="font-size:11px;color:#6a635e;line-height:1.75;font-weight:300;">Only 50 pieces in Drop 0. Hand-made in one small run — once gone, this exact print won't return.</p>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section id="story" class="glass-red" style="border-radius:18px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;">
+      <div style="background:rgba(0,0,0,0.16);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:440px;">
+        <div style="text-align:center;color:rgba(255,255,255,0.4);position:relative;z-index:1;"><div style="font-family:'EB Garamond',serif;font-size:13px;line-height:2.6;font-style:italic;">[ FOUNDER PORTRAIT ]<br>Camera up, marble-print Shurta,<br>Jaipur street behind</div></div>
+        <div style="position:absolute;bottom:18px;left:18px;"><span class="cb" style="background:#fff;color:var(--red);border-radius:20px;">The founder · Jaipur</span></div>
+      </div>
+      <div style="padding:50px 44px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="font-family:'Caveat',cursive;font-size:40px;color:#fff;font-weight:700;line-height:1;margin-bottom:10px;">Our story</div>
+        <p style="font-size:13px;line-height:1.9;color:#fff;font-weight:400;margin-top:8px;">House of Rangreza is an honest expression of an artist, an entrepreneur, a traveller.</p>
+        <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,0.88);font-weight:300;margin-top:14px;">It's a boutique studio from Jaipur — and an ode to the artisan community that has dyed and printed this city's cloth for centuries. A way to carry that craft forward: documented, preserved, and made into limited pieces of the highest quality.</p>
+        <p style="font-size:12px;line-height:1.9;color:rgba(255,255,255,0.88);font-weight:300;margin-top:12px;">Not just another textile house from Jaipur — but a way to bring its living heritage to amazing people like you. Drop 0 is where it begins.</p>
+        <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.25);">
+          <p style="font-size:12px;color:#fff;font-weight:400;"><strong style="font-weight:500;">Thank you</strong> for your trust in us, much love.</p>
+          <div style="font-family:'Caveat',cursive;font-size:22px;color:#fff;font-weight:700;margin-top:4px;">~ Rangreza</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="glass-dark" style="border-radius:18px;padding:56px 40px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;"><div style="font-family:'EB Garamond',serif;font-size:240px;color:rgba(255,255,255,0.03);font-style:italic;">रंग</div></div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:8px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--red);margin-bottom:14px;">50 pieces only · Exclusive launch offer on first 20</div>
+        <h2 style="font-family:'EB Garamond',serif;font-size:38px;font-weight:400;color:#fff;line-height:1.08;max-width:540px;margin:0 auto;">Wear the first thread<br>of Rangreza.</h2>
+        <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:16px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.75;font-weight:300;">Postpay, on trust. Wear it, feel it, then decide what it's worth.</p>
+        <button onclick="openOrder()" style="margin-top:26px;background:var(--red);color:#fff;border:none;font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:16px 40px;cursor:pointer;border-radius:11px;box-shadow:0 8px 22px rgba(230,0,34,0.35);">Claim yours</button>
+      </div>
+    </section>
+
+    <footer style="padding:8px 12px 16px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-family:'EB Garamond',serif;font-size:14px;color:#998;">House of Rangreza · Jaipur</div>
+      <div style="display:flex;gap:18px;"><a style="font-size:8px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#998;cursor:pointer;">Instagram</a><a style="font-size:8px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#998;cursor:pointer;">@friends_of_rangreza</a><a style="font-size:8px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:#998;cursor:pointer;">WhatsApp</a></div>
+      <div style="font-size:8px;color:#bbb;">© 2025 House of Rangreza</div>
+    </footer>
+
+  </div>
+</div>
+
+<!-- ORDER OVERLAY -->
+<div class="ov" id="order-ov" onclick="ovClick(event)">
+  <div style="width:440px;max-width:100%;">
+    <div class="glass" style="border-radius:18px;overflow:hidden;position:relative;background:rgba(247,243,238,0.82);">
+      <div class="glass-red" style="padding:18px 22px;position:relative;border-radius:0;">
+        <button onclick="closeOrder()" style="position:absolute;top:14px;right:14px;width:26px;height:26px;border:1px solid rgba(255,255,255,0.4);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;z-index:20;"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="#fff" stroke-width="1.6"><line x1="1" y1="1" x2="8" y2="8"/><line x1="8" y1="1" x2="1" y2="8"/></svg></button>
+        <div style="font-size:8px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.65);">Drop 0 · The Pink City Shurta</div>
+        <div style="font-family:'EB Garamond',serif;font-size:18px;color:#fff;margin-top:2px;">Claim your Shurta</div>
+      </div>
+
+      <div style="display:flex;gap:4px;padding:14px 22px 0;">
+        <div class="step-dot on" id="d1"></div><div class="step-dot" id="d2"></div><div class="step-dot" id="d3"></div><div class="step-dot" id="d4"></div><div class="step-dot" id="d5"></div>
+      </div>
+      <div style="padding:6px 22px 0;font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:#aaa;" id="step-label">Step 1 of 5 · Who are you</div>
+
+      <div class="screen" id="s1" style="padding:20px 22px 24px;">
+        <div style="font-family:'EB Garamond',serif;font-size:22px;color:var(--blk);margin-bottom:4px;">First, the basics</div>
+        <p style="font-size:11px;color:#888;font-weight:300;margin-bottom:18px;">We'll verify your number so we can stay in touch about your order.</p>
+        <div style="margin-bottom:14px;"><div class="lbl">Your name</div><input class="fld" id="i-name" placeholder="First & last name"/></div>
+        <div style="margin-bottom:8px;"><div class="lbl">Mobile number</div><input class="fld" id="i-mobile" placeholder="+91 ·····  (we'll send an OTP)" /></div>
+        <div id="e1" style="font-size:9px;color:var(--red);margin-bottom:12px;display:none;">Please enter your name and mobile number.</div>
+        <button class="btn-primary" onclick="validate1()">Send OTP →</button>
+      </div>
+
+      <div class="screen" id="s2" style="padding:20px 22px 24px;display:none;">
+        <div style="font-family:'EB Garamond',serif;font-size:22px;color:var(--blk);margin-bottom:4px;">Verify your number</div>
+        <p style="font-size:11px;color:#888;font-weight:300;margin-bottom:18px;">Enter the 4-digit code sent to <span id="masked-num" style="color:var(--blk);">your mobile</span>.</p>
+        <div style="display:flex;gap:8px;justify-content:center;margin-bottom:14px;">
+          <input class="otp" maxlength="1" id="o1" oninput="otpNext(this,'o2')"/><input class="otp" maxlength="1" id="o2" oninput="otpNext(this,'o3')"/><input class="otp" maxlength="1" id="o3" oninput="otpNext(this,'o4')"/><input class="otp" maxlength="1" id="o4" oninput="otpNext(this,null)"/>
+        </div>
+        <div style="text-align:center;margin-bottom:18px;"><span style="font-size:10px;color:#aaa;font-weight:300;">Didn't get it? </span><span style="font-size:10px;color:var(--red);cursor:pointer;font-weight:500;">Resend</span></div>
+        <button class="btn-primary" onclick="toStep(3)">Verify & continue →</button>
+        <button class="btn-ghost" onclick="toStep(1)" style="width:100%;margin-top:4px;">← Back</button>
+      </div>
+
+      <div class="screen" id="s3" style="padding:20px 22px 24px;display:none;">
+        <div style="font-family:'EB Garamond',serif;font-size:22px;color:var(--blk);margin-bottom:4px;">How shall we reach you?</div>
+        <p style="font-size:11px;color:#888;font-weight:300;margin-bottom:18px;">We confirm fit & shipping over WhatsApp. Email is just for your receipt.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid rgba(0,0,0,0.12);background:rgba(255,255,255,0.5);margin-bottom:12px;border-radius:10px;">
+          <div><div style="font-size:11px;color:var(--blk);font-weight:500;">WhatsApp same as mobile?</div><div style="font-size:9px;color:#aaa;font-weight:300;margin-top:2px;">We'll DM you here</div></div>
+          <div class="toggle on" id="wa-toggle" onclick="toggleWA()"><div class="knob"></div></div>
+        </div>
+        <div id="wa-field" style="margin-bottom:14px;display:none;"><div class="lbl">WhatsApp number</div><input class="fld" id="i-wa" placeholder="+91 ·····"/></div>
+        <div style="margin-bottom:18px;"><div class="lbl">Email <span style="color:#bbb;text-transform:none;letter-spacing:0;">(optional · for receipt)</span></div><input class="fld" id="i-email" placeholder="your@email.com"/></div>
+        <button class="btn-primary" onclick="toStep(4)">Continue →</button>
+        <button class="btn-ghost" onclick="toStep(2)" style="width:100%;margin-top:4px;">← Back</button>
+      </div>
+
+      <div class="screen" id="s4" style="padding:20px 22px 24px;display:none;">
+        <div style="font-family:'EB Garamond',serif;font-size:22px;color:var(--blk);margin-bottom:4px;">Your Shurta & where to send it</div>
+        <p style="font-size:11px;color:#888;font-weight:300;margin-bottom:16px;">Pick the closest size — your fit feedback is exactly what we need.</p>
+        <div style="margin-bottom:14px;">
+          <div class="lbl">Size</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;" id="size-row">
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickSize(this,'S / M')">S / M</button>
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickSize(this,'L / XL')">L / XL</button>
+            <button class="szbtn" data-sel="0" style="background:rgba(255,255,255,0.6);color:#0A0A0A;border:1px solid rgba(0,0,0,0.25);" onmouseover="szHover(this,true)" onmouseout="szHover(this,false)" onclick="pickSize(this,'XXL')">XXL</button>
+          </div>
+        </div>
+        <div style="margin-bottom:12px;"><div class="lbl">Full shipping address</div><textarea class="fld" id="i-addr" rows="2" placeholder="House, street, area, landmark"></textarea></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+          <div><div class="lbl">City</div><input class="fld" id="i-city" placeholder="Jaipur"/></div>
+          <div><div class="lbl">Pincode</div><input class="fld" id="i-pin" placeholder="302001"/></div>
+        </div>
+        <div id="e4" style="font-size:9px;color:var(--red);margin-bottom:12px;display:none;">Please pick a size and add your address.</div>
+        <button class="btn-primary" onclick="validate4()">Review my order →</button>
+        <button class="btn-ghost" onclick="toStep(3)" style="width:100%;margin-top:4px;">← Back</button>
+      </div>
+
+      <div class="screen" id="s5" style="padding:20px 22px 24px;display:none;">
+        <div style="font-family:'EB Garamond',serif;font-size:22px;color:var(--blk);margin-bottom:14px;" id="confirm-title">Confirm your order</div>
+        <div id="slot-banner" style="padding:11px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;border-radius:10px;"></div>
+        <div style="border:1px solid rgba(0,0,0,0.1);background:rgba(255,255,255,0.55);padding:14px 16px;margin-bottom:14px;border-radius:10px;">
+          <div style="display:flex;justify-content:space-between;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.07);">
+            <div><div style="font-family:'EB Garamond',serif;font-size:15px;color:var(--blk);">The Pink City — Marble Shurta</div><div style="font-size:10px;color:#888;font-weight:300;margin-top:2px;" id="sum-size">Size · —</div></div>
+            <div style="text-align:right;"><div style="font-size:8px;color:#aaa;letter-spacing:0.1em;text-transform:uppercase;">Pay now</div><div style="font-family:'EB Garamond',serif;font-size:16px;color:var(--red);" id="sum-paynow">₹0</div></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding-top:10px;font-size:11px;" id="sum-line"></div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(237,232,225,0.6);border:1px solid rgba(0,0,0,0.08);margin-bottom:12px;cursor:pointer;border-radius:10px;" onclick="toggleAgree()">
+          <div id="agree-box" style="width:16px;height:16px;border:1.5px solid var(--red);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;border-radius:4px;"></div>
+          <div id="agree-text" style="font-size:10px;color:#5a534e;line-height:1.6;font-weight:300;"></div>
+        </div>
+        <div id="agree-err" style="font-size:9px;color:var(--red);margin-bottom:10px;display:none;">Please confirm to continue.</div>
+        <button class="btn-primary" id="place-btn" onclick="submitOrder()">Place order</button>
+        <button class="btn-ghost" onclick="toStep(4)" style="width:100%;margin-top:4px;">← Back</button>
+      </div>
+
+      <div class="screen" id="s6" style="padding:36px 28px;display:none;text-align:center;">
+        <div style="width:48px;height:48px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 8px 20px rgba(230,0,34,0.3);"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg></div>
+        <div style="font-family:'EB Garamond',serif;font-size:24px;color:var(--blk);" id="suc-title">You're in</div>
+        <p style="font-size:11px;color:#666;margin-top:12px;line-height:1.7;font-weight:300;" id="suc-body"></p>
+        <div style="background:rgba(237,232,225,0.6);border:1px solid rgba(0,0,0,0.08);padding:14px 16px;margin-top:18px;text-align:left;border-radius:10px;">
+          <div style="font-size:8px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#888;margin-bottom:8px;">What happens next</div>
+          <div style="font-size:11px;color:#555;line-height:1.9;font-weight:300;" id="suc-next"></div>
+        </div>
+        <button class="btn-primary" style="margin-top:18px;" onclick="finishOrder()">Done</button>
+      </div>
+    </div>
+
+    <div style="border:1px dashed rgba(255,255,255,0.4);background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);padding:8px 12px;margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-radius:10px;">
+      <span style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Preview slots taken:</span>
+      <button class="pvb" onclick="setPlaced(10,this)" style="background:#fff;border:none;font-size:9px;padding:4px 8px;cursor:pointer;color:#000;border-radius:6px;">10 → #11</button>
+      <button class="pvb" onclick="setPlaced(19,this)" style="background:transparent;border:1px solid rgba(255,255,255,0.4);font-size:9px;padding:4px 8px;cursor:pointer;color:#fff;border-radius:6px;">19 → #20</button>
+      <button class="pvb" onclick="setPlaced(20,this)" style="background:transparent;border:1px solid rgba(255,255,255,0.4);font-size:9px;padding:4px 8px;cursor:pointer;color:#fff;border-radius:6px;">20 → closed</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let pdpSize='', waSame=true, agreed=false, sizeSel='', placed=10;
+function nextNo(){return placed+1;}
+function isPostpay(){return nextNo()<=20;}
+
+function szDefault(b){b.style.background='rgba(255,255,255,0.6)';b.style.color='#0A0A0A';b.style.borderColor='rgba(0,0,0,0.25)';}
+function szActive(b){b.style.background='#E60022';b.style.color='#FFFFFF';b.style.borderColor='#E60022';}
+function szHover(el,on){if(el.dataset.sel==='1')return;if(on)szActive(el);else szDefault(el);}
+function pickPdpSize(el,s){document.querySelectorAll('#pdp-sizes .szbtn').forEach(b=>{b.dataset.sel='0';szDefault(b);});el.dataset.sel='1';szActive(el);pdpSize=s;}
+function pickSize(el,s){document.querySelectorAll('#size-row .szbtn').forEach(b=>{b.dataset.sel='0';szDefault(b);});el.dataset.sel='1';szActive(el);sizeSel=s;}
+
+function setMain(el,label,bg){document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.getElementById('main-img-label').innerHTML=label;document.getElementById('main-img').style.background=bg;}
+
+function setPlaced(n,btn){placed=n;document.querySelectorAll('.pvb').forEach(b=>{b.style.background='transparent';b.style.color='#fff';b.style.border='1px solid rgba(255,255,255,0.4)';});btn.style.background='#fff';btn.style.color='#000';btn.style.border='none';if(document.getElementById('s5').style.display!=='none')renderConfirm();}
+
+function openOrder(){document.getElementById('order-ov').classList.add('open');showStep(1);}
+function ovClick(e){if(e.target===document.getElementById('order-ov'))closeOrder();}
+function closeOrder(){document.getElementById('order-ov').classList.remove('open');}
+function finishOrder(){closeOrder();resetFlow();}
+
+function showStep(n){for(let i=1;i<=6;i++){document.getElementById('s'+i).style.display=(i===n)?'block':'none';}for(let i=1;i<=5;i++){document.getElementById('d'+i).classList.toggle('on',i<=Math.min(n,5));}
+  const labels={1:'Step 1 of 5 · Who are you',2:'Step 2 of 5 · Verify number',3:'Step 3 of 5 · Reach you',4:'Step 4 of 5 · Size & address',5:'Step 5 of 5 · Confirm',6:'Order placed'};
+  document.getElementById('step-label').textContent=labels[n];
+  if(n===4&&pdpSize&&!sizeSel){document.querySelectorAll('#size-row .szbtn').forEach(b=>{if(b.textContent===pdpSize){b.dataset.sel='1';szActive(b);sizeSel=pdpSize;}});}
+}
+function toStep(n){if(n===2){document.getElementById('masked-num').textContent=document.getElementById('i-mobile').value||'your mobile';}if(n===5){renderConfirm();}showStep(n);}
+function validate1(){const ok=document.getElementById('i-name').value.trim()&&document.getElementById('i-mobile').value.trim();document.getElementById('e1').style.display=ok?'none':'block';if(ok)toStep(2);}
+function otpNext(el,next){if(el.value&&next)document.getElementById(next).focus();}
+function toggleWA(){waSame=!waSame;document.getElementById('wa-toggle').classList.toggle('on',waSame);document.getElementById('wa-field').style.display=waSame?'none':'block';}
+function validate4(){const ok=sizeSel&&document.getElementById('i-addr').value.trim();document.getElementById('e4').style.display=ok?'none':'block';if(ok)toStep(5);}
+
+function renderConfirm(){
+  document.getElementById('sum-size').textContent='Size · '+(sizeSel||'—');
+  const banner=document.getElementById('slot-banner'),at=document.getElementById('agree-text');
+  agreed=false;document.getElementById('agree-box').style.background='transparent';document.getElementById('agree-box').innerHTML='';document.getElementById('agree-err').style.display='none';
+  if(isPostpay()){
+    document.getElementById('confirm-title').textContent='Confirm — and we\'ll send it';
+    banner.style.background='rgba(45,122,79,0.1)';banner.style.border='1px solid rgba(45,122,79,0.3)';
+    banner.innerHTML='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#2D7A4F" stroke-width="1.4" style="flex-shrink:0;"><path d="M2 7l3 3 7-7"/></svg><div style="font-size:11px;color:#2D7A4F;font-weight:500;">You\'re order #'+nextNo()+' of 20 — postpay unlocked 🎉</div>';
+    document.getElementById('sum-paynow').textContent='₹0';
+    document.getElementById('sum-line').innerHTML='<span style="color:#888;font-weight:300;">You\'ll decide the price after wearing it</span><span style="color:#0A0A0A;font-weight:500;">from ₹1,111</span>';
+    at.innerHTML='I\'ll share honest feedback on fit & quality, and a fit-check for <strong style="font-weight:500;color:#0A0A0A;">@friends_of_rangreza</strong>. I understand I pay only after receiving, a minimum of ₹1,111.';
+    document.getElementById('place-btn').textContent='Place order — pay nothing now';
+  } else {
+    document.getElementById('confirm-title').textContent='Confirm & pay';
+    banner.style.background='rgba(230,0,34,0.07)';banner.style.border='1px solid rgba(230,0,34,0.25)';
+    banner.innerHTML='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#E60022" stroke-width="1.4" style="flex-shrink:0;"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v3M7 9.4v.1"/></svg><div style="font-size:11px;color:#E60022;font-weight:500;line-height:1.4;">The first 20 postpay slots are full. You can still order at our launch price.</div>';
+    document.getElementById('sum-paynow').textContent='₹1,111';
+    document.getElementById('sum-line').innerHTML='<span style="color:#888;font-weight:300;">Launch price · paid now</span><span style="color:#0A0A0A;font-weight:500;">₹1,111</span>';
+    at.innerHTML='I\'ll share honest feedback on fit & quality, and a fit-check for <strong style="font-weight:500;color:#0A0A0A;">@friends_of_rangreza</strong>.';
+    document.getElementById('place-btn').textContent='Pay ₹1,111 & place order';
+  }
+}
+function toggleAgree(){agreed=!agreed;const b=document.getElementById('agree-box');b.style.background=agreed?'var(--red)':'transparent';b.innerHTML=agreed?'<svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="#fff" stroke-width="2"><path d="M1 4.5l2.5 2.5 4.5-5"/></svg>':'';document.getElementById('agree-err').style.display='none';}
+function submitOrder(){
+  if(!agreed){document.getElementById('agree-err').style.display='block';return;}
+  const no=nextNo(),id='#R0-'+String(no).padStart(4,'0');
+  if(isPostpay()){
+    document.getElementById('suc-title').textContent='You\'re in — order '+id;
+    document.getElementById('suc-body').textContent='You\'re #'+no+' of the first 20. We\'ve sent a confirmation to your WhatsApp & email, and we\'ll personally message you within 24 hours to confirm fit and ship.';
+    document.getElementById('suc-next').innerHTML='1. WhatsApp confirmation (now)<br>2. Shipping in 3 days across India<br>3. Wear it, share your fit-check<br>4. Decide the price & pay (from ₹1,111)';
+  } else {
+    document.getElementById('suc-title').textContent='Order confirmed — '+id;
+    document.getElementById('suc-body').textContent='Payment of ₹1,111 received. We\'ve sent a receipt to your email and a confirmation to WhatsApp. We\'ll ship your Pink City Shurta in 3 days.';
+    document.getElementById('suc-next').innerHTML='1. WhatsApp + email confirmation (now)<br>2. Shipping in 3 days across India<br>3. Wear it, share your fit-check for @friends_of_rangreza';
+  }
+  showStep(6);
+}
+function resetFlow(){waSame=true;agreed=false;sizeSel='';document.getElementById('agree-box').style.background='transparent';document.getElementById('agree-box').innerHTML='';document.getElementById('wa-toggle').classList.add('on');document.getElementById('wa-field').style.display='none';document.querySelectorAll('#size-row .szbtn').forEach(b=>{b.dataset.sel='0';szDefault(b);});['i-name','i-mobile','i-wa','i-email','i-addr','i-city','i-pin','o1','o2','o3','o4'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});showStep(1);}
+</script>
